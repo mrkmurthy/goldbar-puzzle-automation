@@ -15,10 +15,11 @@ public class GamePage extends PageObject {
     static By RESET_BUTTON = By.xpath("//button[text() = 'Reset']");
     static By WEIGH_BUTTON = By.id("weigh");
     static By WEIGHING_TEXT = By.xpath("//div[@class='game-info']//li");
-    static String coinID = "coin_replaceString";
     static By SECOND_WEIGHING_TEXT = By.xpath("//div[@class='game-info']//li[2]");
+    static By LESS_THAN_BUTTON = By.xpath("//button[@class = 'button' and text() = '<']");
+    static By GREATER_THAN_BUTTON = By.xpath("//button[@class = 'button' and text() = '>']");
 
-    public static By coinButton(String stringToReplace) {
-        return By.id(coinID.replace("replaceString", stringToReplace));
+    public static By coinButton(String coinNumber) {
+        return By.id("coin_" + coinNumber);
     }
 }

@@ -4,7 +4,7 @@
 
 This project has been automated in 
 Serenity BDD Framework to find the fake gold bar using a 
-weghing scale in minumum number of attempts.
+weighing scale in minimum number of attempts.
 Application link: _http://ec2-54-208-152-154.compute-1.amazonaws.com/_
 
 **Requirements:**
@@ -17,8 +17,10 @@ Application link: _http://ec2-54-208-152-154.compute-1.amazonaws.com/_
 
 1. Download the project 
 2. Open the Command prompt/Terminal and navigate to project root folder
-3. Enter 'mvn verify' to run the test
-
+3. Enter 'mvn verify' to run the test in default chrome browser
+   For chrome headless: verify -Dwebdriver.driver=chrome -Dheadless.mode=true
+   Firefox: verify -Dwebdriver.driver=firefox
+   
 The project will execute and will display the test report path at the end of the execution under SERENITY REPORTS heading.
 Report location: `_Project-root-folder/target/site/serenity/index.html_`
 

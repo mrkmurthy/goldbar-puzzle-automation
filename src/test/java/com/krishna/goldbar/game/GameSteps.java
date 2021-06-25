@@ -17,14 +17,14 @@ public class GameSteps extends UIInteractionSteps {
         gamePage.open();
     }
 
-    @Step("Put first three bars on the left scale")
+    @Step("Put first three bars on the left bowl")
     public void putFirstThreeBarsOnLeftScale() {
         $(GamePage.LEFT_0_TEXT_FIELD).sendKeys("0");
         $(GamePage.LEFT_1_TEXT_FIELD).sendKeys("1");
         $(GamePage.LEFT_2_TEXT_FIELD).sendKeys("2");
     }
 
-    @Step("Put next three bars on the right scale")
+    @Step("Put next three bars on the right bowl")
     public void putNextThreeBarsOnRightScale() {
         $(GamePage.RIGHT_0_TEXT_FIELD).sendKeys("3");
         $(GamePage.RIGHT_1_TEXT_FIELD).sendKeys("4");
@@ -41,8 +41,7 @@ public class GameSteps extends UIInteractionSteps {
         $(GamePage.RESET_BUTTON).click();
     }
 
-
-    @Step("Put two bars from fake bars group into left and reigh side of scale")
+    @Step("Put two bars from fake bars group into left and right bowl")
     public void putTwoBarsFromFakeBarGroupIntoScale(String barOnLeft, String barOnRight) {
         $(GamePage.LEFT_0_TEXT_FIELD).sendKeys(barOnLeft);
         $(GamePage.RIGHT_0_TEXT_FIELD).sendKeys(barOnRight);
@@ -60,9 +59,9 @@ public class GameSteps extends UIInteractionSteps {
 
     @Step("Get fake bar group")
     public String[] findFakeBarGroup() {
-        if (getLatestWeighing().contains("<"))
+        if ($(GamePage.LESS_THAN_BUTTON).isVisible())
             return new String[]{"0", "1", "2"};
-        if (getLatestWeighing().contains(">"))
+        else if ($(GamePage.GREATER_THAN_BUTTON).isVisible())
             return new String[]{"3", "4", "5"};
         else return new String[]{"6", "7", "8"};
     }
@@ -74,9 +73,9 @@ public class GameSteps extends UIInteractionSteps {
 
     @Step("Find fake bar")
     public String findFakeBar(String[] fakeBarsGroup) {
-        if (getLatestWeighing().contains("<"))
+        if ($(GamePage.LESS_THAN_BUTTON).isVisible())
             return fakeBarsGroup[0];
-        if (getLatestWeighing().contains(">"))
+        else if ($(GamePage.GREATER_THAN_BUTTON).isVisible())
             return fakeBarsGroup[1];
         else return fakeBarsGroup[2];
     }
@@ -84,7 +83,10 @@ public class GameSteps extends UIInteractionSteps {
     @Step("Get list of weighings")
     public List<String> getListOfWeighings() {
         List<WebElement> webElementList = getDriver().findElements(GamePage.WEIGHING_TEXT);
-        List<String> weighingList = webElementList.stream().map(e -> e.getText()).collect(Collectors.toList());
+        List<String> weighingList =
+                webElementList.stream()
+                        .map(e -> e.getText())
+                        .collect(Collectors.toList());
         return weighingList;
     }
 
@@ -95,12 +97,4 @@ public class GameSteps extends UIInteractionSteps {
         alert.accept();
         return alertMessage;
     }
-
-    @Step("Get success message for finding fake bar")
-    public void acceptAlert() {
-        Alert alert = getDriver().switchTo().alert();
-        alert.accept();
-    }
-
-
 }

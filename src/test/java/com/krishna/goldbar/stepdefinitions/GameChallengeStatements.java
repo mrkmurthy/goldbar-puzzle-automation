@@ -12,19 +12,19 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameChallengeStatements {
-    String fakeBar = "";
+    String fakeBar;
     @Steps
     GameSteps gameSteps;
 
     @Steps
     ReportSteps reportSteps;
 
-    @Given("User checks the game fake bar")
-    public void i_am_on_the_Wikipedia_home_page() {
+    @Given("user plays the fake gold bar game")
+    public void i_am_on_the_game_page() {
         gameSteps.openTheGamePage();
     }
 
-    @When("he solves the game")
+    @When("he solves the game puzzle")
     public void find_the_fake_bar_in_the_game() throws InterruptedException {
         gameSteps.putFirstThreeBarsOnLeftScale();
         gameSteps.putNextThreeBarsOnRightScale();
