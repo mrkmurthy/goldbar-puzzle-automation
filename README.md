@@ -9,7 +9,7 @@ Application link: _http://ec2-54-208-152-154.compute-1.amazonaws.com/_
 
 **Requirements:**
 
-1. Java 8/11
+1. Java 8/11/14
 2. Latest maven version.
 3. Latest chrome browser
 

@@ -1,10 +1,9 @@
 package com.krishna.goldbar.utilities;
 
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.steps.ScenarioSteps;
 import net.thucydides.core.steps.StepEventBus;
 
-public class ReportSteps extends ScenarioSteps {
+public class ReportSteps {
 
     @Step("{0}")
     public void report(String thisWillAppearOnReport) {

@@ -9,8 +9,6 @@ import net.thucydides.core.annotations.Steps;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class GameChallengeStatements {
     String fakeBar;
     @Steps
@@ -19,12 +17,12 @@ public class GameChallengeStatements {
     @Steps
     ReportSteps reportSteps;
 
-    @Given("user plays the fake gold bar game")
+    @Given("^user plays the fake gold bar game$")
     public void i_am_on_the_game_page() {
         gameSteps.openTheGamePage();
     }
 
-    @When("he solves the game puzzle")
+    @When("^user solves the game puzzle$")
     public void find_the_fake_bar_in_the_game() throws InterruptedException {
         gameSteps.putFirstThreeBarsOnLeftScale();
         gameSteps.putNextThreeBarsOnRightScale();
@@ -38,7 +36,7 @@ public class GameChallengeStatements {
         fakeBar = gameSteps.findFakeBar(fakeBarsGroup);
     }
 
-    @Then("he should get message that fake bar successfully found")
+    @Then("^user should get message that fake bar successfully found$")
     public void verify_fake_bar_successfully_found_message() {
         List<String> listOfWeightings = gameSteps.getListOfWeighings();
         gameSteps.clickCoinButton(fakeBar);
